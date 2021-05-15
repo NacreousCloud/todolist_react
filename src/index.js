@@ -4,9 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import TodoList from './TodoList/TodoList';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <TodoList></TodoList>
   </React.StrictMode>,
   document.getElementById('root')
 );
