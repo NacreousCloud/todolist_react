@@ -16,9 +16,11 @@ export default class TodoList extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log("Data Pushed : " + this.state.inputData);
+    const newArrForSubmit = this.state.todolistItem.slice().push(this.state.inputData);
     this.setState({
-      todolistItem: [...this.state.todolistItem, this.state.inputData],
+      // todolistItem: [...this.state.todolistItem, this.state.inputData],
+      // CHECK : 불변성을 생각하면 이렇게 하는것이 맞는가?
+      todolistItem: newArrForSubmit,
       inputData: "",
     })
     e.target.value = "";
@@ -53,7 +55,7 @@ export default class TodoList extends React.Component {
           <input type="text" value={this.state.inputData} onChange={this.handleChange}></input>
           <input type="submit" value="Submit"/>
         </form>
-        
+
         {item_for_render}
       </div>
     )
