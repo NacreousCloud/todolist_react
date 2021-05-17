@@ -1,16 +1,12 @@
 import React from 'react';
 
 export default class TodoListItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
-      <div>
+      <div id={this.props.id}>
         {this.props.todoTitle}
-        <span onClick={this.props.deleteIt}>X</span>
+        <span onClick={this.props.onClick}>X</span>
       </div>
-
     )
   }
 }

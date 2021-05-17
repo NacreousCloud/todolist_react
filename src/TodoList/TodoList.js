@@ -31,30 +31,19 @@ export default class TodoList extends React.Component {
     })
   }
 
-  handleDelete(e) {
-    console.log("delete it!");
-    console.log(e.target.value);
-    const newResultArr = this.state.todolistItem.filter(item => {
-      console.log(e);
-      return true;
-    })
+  handleDelete(idx) {
+    const newArr = this.state.todolistItem.slice().filter((item, index) => index !== idx);
+
     this.setState({
-      todolistItem: this.state.todolistItem.filter(item => {
-        console.log(item + " ? " + e.target.value);
-        return item !== e.target.value;
-      }),
+      todolistItem: newArr,
     })
   };
 
   render() {
     const item_for_render = this.state.todolistItem.map( (item, idx) => 
       (
-        <TodoListItem todoTitle={item} deleteIt={this.handleDelete} />
+        <TodoListItem id={idx} todoTitle={item} onClick={() => this.handleDelete(idx)} />
       )
-      // (<div>
-      //   <span>{item}</span>
-      //   <span className="DeleteIt">X</span>
-      // </div>)
     );
     return (
       <div>
@@ -64,8 +53,8 @@ export default class TodoList extends React.Component {
           <input type="text" value={this.state.inputData} onChange={this.handleChange}></input>
           <input type="submit" value="Submit"/>
         </form>
-
-          {item_for_render}
+        
+        {item_for_render}
       </div>
     )
   }
