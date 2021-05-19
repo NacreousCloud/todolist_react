@@ -35,7 +35,6 @@ export default class TodoList extends React.Component {
 
   handleDelete(idx) {
     const newArr = this.state.todolistItem.slice().filter((item, index) => index !== idx);
-
     this.setState({
       todolistItem: newArr,
     })
@@ -43,9 +42,7 @@ export default class TodoList extends React.Component {
 
   render() {
     const item_for_render = this.state.todolistItem.map( (item, idx) => 
-      (
-        <TodoListItem id={idx} todoTitle={item} onClick={() => this.handleDelete(idx)} />
-      )
+      (<TodoListItem id={idx} todoTitle={item} onClick={() => this.handleDelete(idx)} />)
     );
     return (
       <div>
